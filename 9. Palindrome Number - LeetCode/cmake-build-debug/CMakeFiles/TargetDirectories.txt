@@ -1,0 +1,3 @@
+C:/Users/andre/OneDrive/Skrivebord/Coding/C programming/LeetCode/9. Palindrome Number - LeetCode/cmake-build-debug/CMakeFiles/9__Palindrome_Number___LeetCode.dir
+C:/Users/andre/OneDrive/Skrivebord/Coding/C programming/LeetCode/9. Palindrome Number - LeetCode/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/andre/OneDrive/Skrivebord/Coding/C programming/LeetCode/9. Palindrome Number - LeetCode/cmake-build-debug/CMakeFiles/rebuild_cache.dir
