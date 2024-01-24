@@ -1,0 +1,3 @@
+C:/Users/andre/OneDrive/Skrivebord/Coding/C programming/LeetCode/13_roman_to_integer_LeetCode/cmake-build-debug/CMakeFiles/13_roman_to_integer_LeetCode.dir
+C:/Users/andre/OneDrive/Skrivebord/Coding/C programming/LeetCode/13_roman_to_integer_LeetCode/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/andre/OneDrive/Skrivebord/Coding/C programming/LeetCode/13_roman_to_integer_LeetCode/cmake-build-debug/CMakeFiles/rebuild_cache.dir
