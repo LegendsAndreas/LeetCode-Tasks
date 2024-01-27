@@ -16,6 +16,7 @@ int main() {
         printf("The entered integer IS a palindrome");
     else
         printf("The entered integer is NOT a palindrome.");
+    // You did it!
 
     return 0;
 }
