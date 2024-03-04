@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/
 package main
 
 import (
@@ -7,27 +8,29 @@ import (
 func main() {
 	var digits string = "23"
 	filter(digits)
-
 }
 
 func filter(digtis string) {
 	banks := whichBanks(digtis)
-	v := banks["2"]
-	fmt.Print(v[1])
-	/*
-		for i := range digtis {
-			if digtis[i] == '0' || digtis[i] == '1' {
-				log.Fatal("Error: A number less than 2 is present.")
-			}
+	fmt.Println(banks)
+	var letterComb []string
+
+	// We will make our combinations, out of the first element in our map(hash table).
+	firstMapElementLen := len(banks[string(digtis[0])])
+	firstMapElement := banks[string(digtis[0])]
+	for i := 0; i < firstMapElementLen; i++ {
+		tempt1 := firstMapElement[i]
+		fmt.Println("Element 1:", tempt1)
+		// ToDo: Maybe it would be a good idea to make the below code a function.
+		for j := 1; j < len(banks); j++ { // Plus 1 for the length, so that we don't interact with the first map element.
+			var tempt2 string = tempt1 + banks[string(digtis[j])][j-1]
+			fmt.Println("Element 2:", tempt2)
+			letterComb = append(letterComb, tempt2)
 		}
+	}
 
-		sli := make([]string, 0)
-		var letterComb string
-		digtisLen := len(digtis)
+	fmt.Println(letterComb)
 
-		for i := 0; i < digtisLen; i++ {
-
-		}*/
 }
 
 func whichBanks(digtis string) map[string][]string {
