@@ -6,35 +6,41 @@ import (
 )
 
 func main() {
-	var digits string = "23"
-	filter(digits)
+	var digits string = "234"
+	letterCombs := filter(digits)
+	fmt.Println(letterCombs)
 }
 
-func filter(digtis string) {
+func filter(digtis string) []string {
 	banks := whichBanks(digtis)
-	fmt.Println(banks)
 	var letterComb []string
 
-	// We will make our combinations, out of the first element in our map(hash table).
+	// In case the length of banks is less than 2, we can just return it right away.
+	if len(banks) < 2 {
+		return banks[digtis]
+	}
+
+	// We will make our combinations, out of the first element in our map(hash table), by addressing the first digit.
 	firstMapElementLen := len(banks[string(digtis[0])])
-	firstMapElement := banks[string(digtis[0])]
+	firstMapElement := banks[string(digtis[0])] // We set firstMapElement to be equal to the first array in our map.
+
 	for i := 0; i < firstMapElementLen; i++ {
-		tempt1 := firstMapElement[i]
-		fmt.Println("Element 1:", tempt1)
-		// ToDo: Maybe it would be a good idea to make the below code a function.
-		for j := 1; j < len(banks); j++ { // Plus 1 for the length, so that we don't interact with the first map element.
-			var tempt2 string = tempt1 + banks[string(digtis[j])][j-1]
-			fmt.Println("Element 2:", tempt2)
-			letterComb = append(letterComb, tempt2)
+		temptLetter := firstMapElement[i]
+		for j := 1; j < len(banks); j++ { // Plus 1 to not hit the first array in our map.
+			insertLetterCombs(&letterComb, banks[string(digtis[j])], temptLetter)
 		}
 	}
 
-	fmt.Println(letterComb)
+	return letterComb
 
 }
 
+// whichBanks is a function that takes in a string (digits) and returns a map of strings to slices of strings (banks).
+// It populates the map based on the digits provided and assigns the corresponding letter banks to each digit.
+// It uses a switch statement to determine the digit and assigns the letter bank accordingly.
+// It then returns the populated map.
 func whichBanks(digtis string) map[string][]string {
-	banks := make(map[string][]string)
+	banks := make(map[string][]string) // The variable which will return the relevant banks.
 
 	// Arrays with letters corresponding to each digit.
 	bank2 := [3]string{"a", "b", "c"}
@@ -46,6 +52,7 @@ func whichBanks(digtis string) map[string][]string {
 	bank8 := [3]string{"t", "u", "v"}
 	bank9 := [4]string{"w", "x", "y", "z"}
 
+	// Insert relevant banks into the bank variable.
 	for i := 0; i < len(digtis); i++ {
 		switch digtis[i] {
 		case '2':
@@ -69,4 +76,13 @@ func whichBanks(digtis string) map[string][]string {
 	}
 
 	return banks
+}
+
+// insertLetterCombs is a function that takes in a pointer to a slice of strings (letterCombs), a slice of strings (currentBank), and a string (currentMainLetter). It appends combinations.
+// I thought it felt better by not returning anything and just using a pointer.
+func insertLetterCombs(letterCombs *[]string, currentBank []string, currentMainLetter string) {
+	for i := 0; i < len(currentBank); i++ {
+		tempt := currentMainLetter + currentBank[i]
+		*letterCombs = append(*letterCombs, tempt)
+	}
 }
