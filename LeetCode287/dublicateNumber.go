@@ -7,10 +7,11 @@ import (
 )
 
 func main() {
-	var numbers = []int{8, 2, 1, 9, 9}
-	var numbers2 = []int{8, 2, 1, 9, 9}
+	var numbers = []int{8, 2, 9, 3, 1, 7, 17, 22, 99, 1, 33}
+	var numbers2 = []int{8, 2, 9, 3, 1, 7, 17, 22, 99, 1, 33}
 	fmt.Println("The duplicate number is:", findDuplicate1(numbers))
 	fmt.Println("The duplicate number is:", findDuplicate2(numbers2))
+	fmt.Println("The duplicate number is:", findDuplicate3(numbers))
 }
 
 // findDuplicate1 takes in a slice of integers 'nums' and returns the duplicate number found in the slice.
@@ -54,7 +55,20 @@ func findDuplicate2(nums []int) int {
 	return duplicateNumber
 }
 
-/* ToDo: make this work with a stack instead.
-func findDuplicate3(nums [5]int) int {
-
-}*/
+// findDuplicate3 takes in a slice of integers 'nums' and returns the duplicate number found in the slice, or -1 if no duplicates are found.
+// The function creates a map 'numberMap' to track the occurrence of each number in the slice.
+// It iterates through the 'nums' slice, for each number it checks if it already exists in the 'numberMap' map.
+// If the number already exists in the map, it means it is a duplicate and the function immediately returns the duplicate number.
+// Otherwise, it adds the number to the 'numberMap' map and continues iterating through the slice.
+// If no duplicates are found, the function returns -1.
+// AI Assist literally recommended me this code and it's pretty solid.
+func findDuplicate3(nums []int) int {
+	numberMap := make(map[int]bool)
+	for _, num := range nums {
+		if numberMap[num] { // Checks if the value of the key 'num' is true. Since 'numberMap' is empty on the first iteration, nothing happens.
+			return num
+		}
+		numberMap[num] = true
+	}
+	return -1
+}
